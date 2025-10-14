@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="ClassDiagram" id="class-diagram-1">
+    <mxGraphModel dx="1194" dy="686" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- PersonContact -->
+        <mxCell id="pc" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc.label" value="PersonContact
++MAX_NAME_LENGTH: int
+-companyName: String
+-fullName: String
+-address: Address
+-phoneNumber: String
+
++PersonContact(String,String,Address,String)
++getCompanyName(): String
++getFullName(): String
++getAddress(): Address
++getPhoneNumber(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="pc">
+          <mxGeometry x="10" y="8" width="200" height="84" as="geometry"/>
+        </mxCell>
+
+        <!-- Customer -->
+        <mxCell id="cust" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F7F7FF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="40" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="cust.label" value="Customer
+-static nextId: int
+-id: int
+
++Customer(int,String,String,Address,String)
++Customer(String,String,Address,String)
++resetNextId(int): void
++getNextId(): int
++getId(): int
++toString(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="cust">
+          <mxGeometry x="10" y="8" width="200" height="84" as="geometry"/>
+        </mxCell>
+
+        <!-- SalesEngineer -->
+        <mxCell id="se" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF7F7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="220" height="72" as="geometry"/>
+        </mxCell>
+        <mxCell id="se.label" value="SalesEngineer
+-experienceYears: int
+
++SalesEngineer(String,String,Address,String,int)
++getExperienceYears(): int
++toString(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="se">
+          <mxGeometry x="10" y="8" width="200" height="56" as="geometry"/>
+        </mxCell>
+
+        <!-- Address -->
+        <mxCell id="addr" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F7FFF7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="160" width="220" height="84" as="geometry"/>
+        </mxCell>
+        <mxCell id="addr.label" value="Address
+-street: String
+-city: String
+-FORMAT_HINT: String
+
++Address(String,String)
++Address(String)
+-stripPrefix(String,String): String
+-validatePart(String,String): String
+-showError(): void
++getStreet(): String
++getCity(): String
++getFormattedStreet(): String
++getFormattedCity(): String
++toString(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="addr">
+          <mxGeometry x="10" y="8" width="200" height="68" as="geometry"/>
+        </mxCell>
+
+        <!-- ProductDetail -->
+        <mxCell id="pd" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF7FF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="220" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="pd.label" value="ProductDetail
+-productName: String
+-quantity: int
+-deliveryDays: int
+-price: double
+
++ProductDetail(String,int,int,double)
++getProductName(): String
++getQuantity(): int
++getDeliveryDays(): int
++getPrice(): double
++toString(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="pd">
+          <mxGeometry x="10" y="8" width="200" height="76" as="geometry"/>
+        </mxCell>
+
+        <!-- SupplyContract -->
+        <mxCell id="sc" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFF0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="280" width="260" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="sc.label" value="SupplyContract
+-static nextId: int
+-id: int
+-companyName: String
+-productDetail: ProductDetail
+
++SupplyContract(int,String,ProductDetail)
++SupplyContract(String,ProductDetail)
++getId(): int
++getCompanyName(): String
++getProductDetail(): ProductDetail
++setCompanyName(String): void
++setProductDetail(ProductDetail): void
++resetNextId(int): void
++getNextId(): int
++toString(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="sc">
+          <mxGeometry x="10" y="8" width="240" height="96" as="geometry"/>
+        </mxCell>
+
+        <!-- DataStore -->
+        <mxCell id="ds" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F0FFF7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="40" width="300" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="ds.label" value="DataStore
+-ENGINEERS_FILE: String
+-CUSTOMERS_FILE: String
+-CONTRACTS_FILE: String
+-static instance: DataStore
+-engineers: List&lt;SalesEngineer&gt;
+-customers: List&lt;Customer&gt;
+-contracts: List&lt;SupplyContract&gt;
+
+-DataStore()
++getInstance(): DataStore
++addSalesEngineer(SalesEngineer): void
++getSalesEngineers(): List&lt;SalesEngineer&gt;
++updateSalesEngineer(int,SalesEngineer): void
++removeSalesEngineer(int): void
++addCustomer(Customer): void
++getCustomers(): List&lt;Customer&gt;
++findCustomerById(int): Optional&lt;Customer&gt;
++updateCustomer(int,Customer): void
++removeCustomerByIndex(int): void
++addContract(SupplyContract): void
++getContracts(): List&lt;SupplyContract&gt;
++findContractById(int): Optional&lt;SupplyContract&gt;
++updateContractByIndex(int,SupplyContract): void
++removeContractByIndex(int): void
++loadData(): void
++saveData(): void" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="ds">
+          <mxGeometry x="10" y="8" width="280" height="124" as="geometry"/>
+        </mxCell>
+
+        <!-- PersistenceManager -->
+        <mxCell id="pm" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF0F7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="200" width="300" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm.label" value="PersistenceManager
++loadSalesEngineers(String): List&lt;SalesEngineer&gt;
++saveSalesEngineers(List&lt;SalesEngineer&gt;, String): void
++loadCustomers(String): List&lt;Customer&gt;
++saveCustomers(List&lt;Customer&gt;, String): void
++loadContracts(String): List&lt;SupplyContract&gt;
++saveContracts(List&lt;SupplyContract&gt;, String): void
+-parseIntSafe(String): int
+-parseDoubleSafe(String): double" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="pm">
+          <mxGeometry x="10" y="8" width="280" height="76" as="geometry"/>
+        </mxCell>
+
+        <!-- ReportingService -->
+        <mxCell id="rs" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F7FFF7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="640" y="320" width="300" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="rs.label" value="ReportingService
+-engineers: List&lt;SalesEngineer&gt;
+-customers: List&lt;Customer&gt;
+-contracts: List&lt;SupplyContract&gt;
+
++ReportingService(List&lt;SalesEngineer&gt;, List&lt;Customer&gt;, List&lt;SupplyContract&gt;)
++getEngineersReport(): List&lt;String&gt;
++getContractsReport(): List&lt;String&gt;
++getCustomersReport(): List&lt;String&gt;
++averageQuantity(): double
++maxContractCost(): double
++maxDeliveryDays(): int
++mostDemandedProduct(): String" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="rs">
+          <mxGeometry x="10" y="8" width="280" height="104" as="geometry"/>
+        </mxCell>
+
+        <!-- UI: AddPanel -->
+        <mxCell id="ap" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF8E7;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="420" width="260" height="92" as="geometry"/>
+        </mxCell>
+        <mxCell id="ap.label" value="AddPanel
+-store: DataStore
+-PHONE_PATTERN: Pattern
+
++AddPanel()
+-createForm(Consumer&lt;String[]&gt;, String[]): JPanel
+-addEngineer(String[]): void
+-addCustomer(String[]): void
+-addContract(String[]): void" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="ap">
+          <mxGeometry x="10" y="8" width="240" height="76" as="geometry"/>
+        </mxCell>
+
+        <!-- UI: ReportPanel -->
+        <mxCell id="rp" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E7FFF8;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="420" width="260" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="rp.label" value="ReportPanel
+-store: DataStore
+-combo: JComboBox&lt;String&gt;
+-listModel: DefaultListModel&lt;String&gt;
+-listView: JList&lt;String&gt;
+-btnEdit: JButton
+-btnDelete: JButton
+
++ReportPanel()
+-refreshReport(ActionEvent): void
+-editSelected(): void
+-deleteSelected(): void" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="rp">
+          <mxGeometry x="10" y="8" width="240" height="96" as="geometry"/>
+        </mxCell>
+
+        <!-- MainFrame + HeaderPanel + BackgroundPanel -->
+        <mxCell id="mf" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F0F7FF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="980" y="420" width="300" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="mf.label" value="MainFrame
+-store: DataStore
+
++MainFrame()
+-createMenuBar(): JMenuBar
++main(String[]): void" style="text;html=1;align=left;verticalAlign=top;spacing=8;fontSize=12;" vertex="1" parent="mf">
+          <mxGeometry x="10" y="8" width="280" height="104" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="hp" value="HeaderPanel" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;" vertex="1" parent="mf">
+          <mxGeometry x="100" y="540" width="160" height="48" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="bp" value="BackgroundPanel" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFFFFF;fontSize=12;" vertex="1" parent="mf">
+          <mxGeometry x="100" y="600" width="160" height="48" as="geometry"/>
+        </mxCell>
+
+        <!-- Connectors: inheritance -->
+        <mxCell id="inh1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" source="cust" target="pc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="inh2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" edge="1" source="se" target="pc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Associations: DataStore -> lists -->
+        <mxCell id="assoc1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;" edge="1" source="ds" target="se" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="assoc2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;" edge="1" source="ds" target="cust" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="assoc3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;" edge="1" source="ds" target="sc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Associations: composition / usage -->
+        <mxCell id="sc_pd" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;endArrow=open;" edge="1" source="sc" target="pd" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pc_addr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=1;endArrow=open;" edge="1" source="pc" target="addr" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="pm_usage1" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="pm" target="se" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm_usage2" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="pm" target="cust" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="pm_usage3" style="edgeStyle=elbowEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="pm" target="sc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rs_usage1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="rs" target="se" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rs_usage2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="rs" target="cust" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rs_usage3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="rs" target="sc" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- UI -> DataStore usage -->
+        <mxCell id="ap_ds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="ap" target="ds" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rp_ds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="rp" target="ds" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="mf_ds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="mf" target="ds" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- MainFrame -> Header/Background -->
+        <mxCell id="mf_hp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="mf" target="hp" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="mf_bp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeDashPattern=1 1;" edge="1" source="mf" target="bp" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
